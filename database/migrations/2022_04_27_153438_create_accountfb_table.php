@@ -1,0 +1,44 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('accountfb', function (Blueprint $table) {
+            $table->id();
+            $table->string('facebook_id')->nullable();
+            $table->string('name')->nullable();
+            $table->string('email')->unique()->nullable();
+            $table->string('fullname')->nullable();
+            $table->string('phone',11)->nullable();
+            $table->string('email_cic')->nullable();
+            $table->string('address')->nullable();
+            $table->string('ma_cic')->nullable();
+            $table->string('tengoicheck')->nullable();
+            $table->integer('soluotcheck')->nullable();
+            $table->date('ngaykichhoat')->nullable();
+            $table->date('ngayhethan')->nullable();
+            $table->rememberToken();
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('accountfb');
+    }
+};
